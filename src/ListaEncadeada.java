@@ -1,6 +1,6 @@
 public class ListaEncadeada {
 
-    private Node Lista; //Atribui o nó a uma lista
+    public Node Lista; //Atribui o nó a uma lista
 
     public ListaEncadeada(){
         Lista = null;
@@ -15,7 +15,6 @@ public class ListaEncadeada {
             return false;
         }
     }//verifica se a lista está vazia
-
 
     public void inserePrimeiro(int info){
         Node newNode = new Node(info);
@@ -135,4 +134,44 @@ public class ListaEncadeada {
             return -1;
         }
     }
+
+    public boolean contem(int chave) {
+        Node atual = Lista;
+        while (atual != null) {
+            if (atual.info == chave) {
+                return true;
+            }
+            atual = atual.proximo;
+        }
+        return false;
+    }
+    // Função contem recebendo o elemento chave como parametro
+    /*
+    *   -> atual recebe Lista parar buscar desde o primeiro nó
+    *   -> Enquanto atual for diferente de nulo
+    *       -> Se o info referente ao valor do nó atual for o mesmo valor do elemento chave
+    *           -> retornará verdadeiro, ou seja, encontrou a chave na lista
+    *       -> avança para o próximo nó da lista
+    *   -> se cair fora do while (em que atual = nulo) retornará falso, ou seja, não localizou a chave na lista
+    *
+    * */
+
+    public int tamanhoLista() {
+        int tamanho = 0;
+        Node atual = Lista;
+        while (atual != null) {
+            tamanho++;
+            atual = atual.proximo;
+        }
+        return tamanho;
+    }
+    // Função tamanhoLista usada para calcular o número de elementos da lista (usado no método insere)
+    /*
+    *   -> variável tamanho para atribuição do número de elementos (inicializada em 0)
+    *   -> atual recebe Lista parar buscar desde o primeiro nó (semelhante ao metodo anterior)
+    *   -> Enquanto atual for diferente de nulo
+    *       -> irá incrementar o valor de tamanho e avançar para o próximo nó da lista
+    *   -> por fim retorna o valor de tamanho representando o número de elementos da lista
+    *
+    * */
 }
